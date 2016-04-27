@@ -75,7 +75,7 @@ function registerBIOS() {
     downloadROM("mother3.gba");
 }
 function downloadROM() {
-    Iodine.pause();
+    IodineGUI.Iodine.pause();
     showTempString("Downloading Earthbound 2");
     downloadFile("mother3.gba", registerROM);
 }

@@ -126,3 +126,6 @@ div#menu input+span {
 .nowrap {
     white-space: nowrap;
 }
+#filemenu {
+  display: none;
+}

@@ -64,6 +64,31 @@ window.onload = function () {
     registerGUIEvents();
     //Register GUI settings.
     registerGUISettings();
+    //Start game:
+    downloadBIOS();
+}
+function downloadBIOS() {
+    downloadFile("bios.bin", registerBIOS);
+}
+function registerBIOS() {
+    processDownload(this, attachBIOS);
+    downloadROM("mother3.gba");
+}
+function downloadROM() {
+    Iodine.pause();
+    showTempString("Downloading Earthbound 2");
+    downloadFile("mother3.gba", registerROM);
+}
+function registerROM() {
+    clearTempString();
+    processDownload(this, attachROM);
+    if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i)) {
+        IodineGUI.Iodine.disableAudio();
+    }
+    IodineGUI.Iodine.play();
+    document.getElementById("play").className = "hide";
+    document.getElementById("pause").className = "show";
+    document.getElementById("menu").className = "playing";
 }
 function registerIodineHandler() {
     try {
